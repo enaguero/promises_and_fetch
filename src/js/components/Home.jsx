@@ -19,6 +19,8 @@ const callMe = (seconds) => {
 /*  Fetch Example
 Source: https://www.freecodecamp.org/news/how-to-fetch-data-from-an-api-using-the-fetch-api-in-javascript/
 
+Source: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
 fetch('https://dummyjson.com/todos').then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -32,6 +34,10 @@ fetch('https://dummyjson.com/todos').then(response => {
   .catch(error => {
     console.error('Error:', error);
   });
+
+
+Reference for conditional redering: 
+https://react.dev/learn/conditional-rendering#conditional-ternary-operator--
 
 */
 
