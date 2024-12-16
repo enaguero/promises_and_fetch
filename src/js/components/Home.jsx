@@ -16,6 +16,24 @@ const callMe = (seconds) => {
 	},seconds)
 }
 
+/*  Fetch Example
+Source: https://www.freecodecamp.org/news/how-to-fetch-data-from-an-api-using-the-fetch-api-in-javascript/
+fetch('https://dummyjson.com/todos').then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    //Processed data
+    console.log('User Data:', data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+*/
+
 //create your first component
 const Home = () => {
 	return (
