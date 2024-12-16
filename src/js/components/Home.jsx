@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
@@ -18,6 +18,7 @@ const callMe = (seconds) => {
 
 /*  Fetch Example
 Source: https://www.freecodecamp.org/news/how-to-fetch-data-from-an-api-using-the-fetch-api-in-javascript/
+
 fetch('https://dummyjson.com/todos').then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -36,6 +37,25 @@ fetch('https://dummyjson.com/todos').then(response => {
 
 //create your first component
 const Home = () => {
+
+	const [tasks, setTasks] = useState([]);
+
+	useEffect(()=>{
+		const getToDos = async () => {
+			let response = await fetch("https://dummyjson.com/todos");
+			if (!response.ok) { new Error("The information is not available, try later!")};
+			const data = await response.json();
+			console.log("data" + data);
+			setTasks(data["todos"].map((t)=> t.todo))
+		}
+
+		getToDos()
+	}, [])
+
+	const listItems = tasks.map(t =>
+		<li>{t}</li>
+	  );
+
 	return (
 		<div className="text-center">
             
@@ -67,6 +87,19 @@ const Home = () => {
 				})
 				
 			} } placeholder="Please introduce correct number to call" /><br/><br/>
+			
+			<div>
+				{listItems.length === 0 ? (
+					<div>No items available</div>
+				) : (
+					<ul>
+						{listItems.map((item, index) => (
+							<li key={index}>{item}</li>
+						))}
+					</ul>
+				)}
+        	</div>
+
 			<a href="#" className="btn btn-success">
 				If you see this green button... bootstrap is working...
 			</a>
